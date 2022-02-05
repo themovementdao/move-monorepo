@@ -1,0 +1,99 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IManaging",
+  "sourceName": "build/sources/adapters/interfaces/IManaging.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract DaoRegistry",
+          "name": "dao",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "proposalId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "processProposal",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract DaoRegistry",
+          "name": "dao",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "proposalId",
+          "type": "bytes32"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "adapterOrExtensionId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "adapterOrExtensionAddr",
+              "type": "address"
+            },
+            {
+              "internalType": "enum IManaging.UpdateType",
+              "name": "updateType",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint128",
+              "name": "flags",
+              "type": "uint128"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keys",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "values",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "extensionAddresses",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint128[]",
+              "name": "extensionAclFlags",
+              "type": "uint128[]"
+            }
+          ],
+          "internalType": "struct IManaging.ProposalDetails",
+          "name": "proposal",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "submitProposal",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

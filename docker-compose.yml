@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    network_mode: host
+    volumes:
+      - ./docker/nginx/nginx-dev.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/certs:/etc/nginx/ssl
+    depends_on:
+      - movements
+      - move-ui
+    command: /bin/bash -c "exec nginx -g 'daemon off;'"
+  movements:
+    build:
+      context: ./packages/movements
+    container_name: movements
+    network_mode: host
+    volumes:
+      - ./packages/movements/subdomains.json:/app/subdomains.json
+  move-ui:
+    build:
+      context: ./packages/ui
+      dockerfile: Dockerfile.local
+    container_name: move-ui
+    network_mode: host

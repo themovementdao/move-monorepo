@@ -1,0 +1,30 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "sourceMap": true,
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        /* Strict Type-Checking Options */
+        "strict": true,
+        "noImplicitAny": true,
+        /* Module Resolution Options */
+        "moduleResolution": "node",
+        "baseUrl": "./src",
+        "esModuleInterop": true,
+        /* Advanced Options */
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],   
+    },
+    "lib": [
+        "es2016",
+        "ESNext.BigInt"
+    ],
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}

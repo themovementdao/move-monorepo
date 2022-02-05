@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  merkaba-ui:
+    build: .
+    container_name: merkaba-ui
+    ports:
+      - 3000:80

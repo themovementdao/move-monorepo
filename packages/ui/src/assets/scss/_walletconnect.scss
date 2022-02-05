@@ -1,0 +1,121 @@
+@use "./variables" as *; /* load without namespace for convenience */
+@use "./button";
+
+.walletconnect__options {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin: auto;
+  text-align: left;
+}
+
+.walletconnect__options-button {
+  color: $color-primary;
+  background-color: $color-background-primary;
+  border: 1px solid $color-border-primary;
+  border-radius: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-family: $font-accent;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+
+  &--connected {
+    &:before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: $color-lightgreen;
+      border-radius: 50px;
+      left: 13px;
+      top: 13px;
+    }
+
+    .wallet-name {
+      margin-left: 1rem;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.walletconnect__wallet-icon {
+  display: inline-block;
+  margin-left: 0.5rem;
+  width: 16px;
+  vertical-align: middle;
+}
+
+.walletconnect__connected-address-text {
+  display: inline-block;
+  background-color: rgba(214, 216, 218, 0.2);
+  color: $color-primary;
+  font-size: 1rem;
+  margin: 1rem 0;
+  font-family: $font-accent;
+  padding: 0.5rem;
+}
+
+.walletconnect__disconnect-link-button {
+  background: none;
+  border: none;
+  color: $color-primary;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-decoration: underline;
+  font-family: $font-body;
+  opacity: 1;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.walletconnect__connect-button {
+  @extend .button;
+
+  border-radius: 12px;
+  box-shadow: 0 2px 2px 0 $color-shadow-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--error {
+    color: $color-brightsalmon;
+    font-size: 0.85rem;
+
+    > span:first-of-type {
+      margin-right: 12px;
+    }
+  }
+
+  .connect-button-text {
+    display: inline-block;
+
+    &--ethAddress {
+      text-transform: none;
+    }
+  }
+}
+
+// WALLET OVERRIDES
+
+.walletconnect-modal__mobile__toggle a {
+  color: $color-primary;
+}
+
+.modal-nav .walletconnect__connect-button--error span:last-child {
+  display: none !important;
+}

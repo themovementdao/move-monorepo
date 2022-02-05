@@ -1,0 +1,148 @@
+ 
+  specVersion: 0.0.2
+  description: Tribute DAO Framework Subgraph
+  repository: https://github.com/openlawteam/tribute-contracts
+  schema:
+    file: ./schema.graphql
+  dataSources:
+    # ====================================== DaoFactory ====================================
+    - kind: ethereum/contract
+      name: DaoFactory
+      network: rinkeby
+      source:
+        address: "0x5c82a8df33e614a36DFEc008479f26aBB4Ca3Fb5"
+        abi: DaoFactory
+        startBlock: 9550261
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.4
+        language: wasm/assemblyscript
+        entities:
+          - TributeDao
+        abis:
+          - name: DaoFactory
+            file: ./contracts/DaoFactory.json
+        eventHandlers:
+          - event: DAOCreated(address,string)
+            handler: handleDaoCreated
+        file: ./mappings/core/dao-factory-mapping.ts
+
+
+
+  templates:
+    # ====================================== DaoRegistry ====================================
+    - kind: ethereum/contract
+      name: DaoRegistry
+      network: rinkeby
+      source:
+        abi: DaoRegistry
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.4
+        language: wasm/assemblyscript
+        entities:
+          - Adapter
+          - Extension
+          - Proposal
+          - Member
+          - Vote
+        abis:
+          - name: DaoRegistry
+            file: ./contracts/DaoRegistry.json
+          - name: OnboardingContract
+            file: ./contracts/OnboardingContract.json
+          - name: DistributeContract
+            file: ./contracts/DistributeContract.json
+          - name: TributeContract
+            file: ./contracts/TributeContract.json
+          - name: TributeNFTContract
+            file: ./contracts/TributeNFTContract.json
+          - name: ManagingContract
+            file: ./contracts/ManagingContract.json
+          - name: GuildKickContract
+            file: ./contracts/GuildKickContract.json
+          - name: FinancingContract
+            file: ./contracts/FinancingContract.json
+          - name: OffchainVotingContract
+            file: ./contracts/OffchainVotingContract.json
+          - name: VotingContract
+            file: ./contracts/VotingContract.json
+          - name: IVoting
+            file: ./contracts/IVoting.json
+          - name: ERC20Extension
+            file: ./contracts/ERC20Extension.json
+        eventHandlers:
+          - event: SubmittedProposal(bytes32,uint256)
+            handler: handleSubmittedProposal
+          - event: SponsoredProposal(bytes32,uint256,address)
+            handler: handleSponsoredProposal
+          - event: ProcessedProposal(bytes32,uint256)
+            handler: handleProcessedProposal
+          - event: AdapterAdded(bytes32,address,uint256)
+            handler: handleAdapterAdded
+          - event: AdapterRemoved(bytes32)
+            handler: handleAdapterRemoved
+          - event: ExtensionAdded(bytes32,address)
+            handler: handleExtensionAdded
+          - event: ExtensionRemoved(bytes32)
+            handler: handleExtensionRemoved
+          - event: UpdateDelegateKey(address,address)
+            handler: handleUpdateDelegateKey
+          - event: ConfigurationUpdated(bytes32,uint256)
+            handler: handleConfigurationUpdated
+          - event: AddressConfigurationUpdated(bytes32,address)
+            handler: handleAddressConfigurationUpdated
+        file: ./mappings/core/dao-registry-mapping.ts
+    # ====================================== BankExtension ====================================
+    - kind: ethereum/contract
+      name: BankExtension
+      network: rinkeby
+      source:
+        abi: BankExtension
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.4
+        language: wasm/assemblyscript
+        entities:
+          - TokenHolder
+          - Token
+          - Member
+        abis:
+          - name: BankExtension
+            file: ./contracts/BankExtension.json
+          - name: ERC20
+            file: ./contracts/ERC20.json
+          - name: ERC20Extension
+            file: ./contracts/ERC20Extension.json
+        eventHandlers:
+          - event: NewBalance(address,address,uint160)
+            handler: handleNewBalance
+          - event: Withdraw(address,address,uint160)
+            handler: handleWithdraw
+        file: ./mappings/extensions/bank-extension-mapping.ts
+    # ====================================== NFTExtension ====================================
+    - kind: ethereum/contract
+      name: NFTExtension
+      network: rinkeby
+      source:
+        abi: NFTExtension
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.4
+        language: wasm/assemblyscript
+        entities:
+          - NFTCollection
+          - NFT
+        abis:
+          - name: NFTExtension
+            file: ./contracts/NFTExtension.json
+        eventHandlers:
+          - event: CollectedNFT(address,uint256)
+            handler: handleCollectedNFT
+          - event: TransferredNFT(address,uint256,address,address)
+            handler: handleTransferredNFT
+          - event: WithdrawnNFT(address,uint256,address)
+            handler: handleWithdrawnNFT
+        file: ./mappings/extensions/nft-extension-mapping.ts
+
+        

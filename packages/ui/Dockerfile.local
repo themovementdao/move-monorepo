@@ -1,0 +1,29 @@
+
+# Node version matching the version declared in the package.json 
+FROM node:16.13.0-alpine3.11 as build
+RUN apk add git openssh-client
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN npm install -g npm@8.1.0
+RUN npm install -g serve
+
+# Created the app work dir
+WORKDIR /app
+
+# Add node to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# Copy app configs
+COPY package.json ./
+COPY package-lock.json ./
+
+COPY src/abis ./src/abis
+
+# Install app dependencies
+RUN npm ci
+
+COPY . .
+
+# Build app
+RUN npm run build
+
+CMD [ "serve", "-s", "build", "-p", "4000" ]

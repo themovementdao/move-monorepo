@@ -1,0 +1,33 @@
+{
+  "name": "move-monorepo",
+  "scripts": {
+    "install": "./scripts/install.sh",
+    "start:dev": "docker-compose -f docker-compose.dev.yml up -d --build",
+    "subgraph:deploy": "./scripts/subgraph.sh",
+    "contracts:compile": "./scripts/compile.sh",
+    "contracts:deploy": "./scripts/deploy.sh",
+    "contracts:test": "./scripts/test.sh @move-monorepo/contracts",
+    "contracts:verify": "./scripts/verify.sh",
+    "snapshot-hub:start": "./scripts/snapshot-hub.sh",
+    "ui:start": "./scripts/ui.sh",
+    "prettier": "./scripts/prettier.sh",
+    "prettier:fix": "./scripts/prettier.sh fix",
+    "slither": "./scripts/slither.sh",
+    "eslint": "./scripts/eslint.sh",
+    "git-cz": "git-cz",
+    "generate-changelog": "generate-changelog"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@3.0.2",
+  "devDependencies": {
+    "generate-changelog": "^1.8.0",
+    "git-cz": "^4.8.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  }
+}

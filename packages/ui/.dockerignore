@@ -1,0 +1,6 @@
+Dockerfile
+.vscode
+.github
+node_modules
+.gitignore
+build

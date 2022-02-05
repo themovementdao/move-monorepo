@@ -1,0 +1,90 @@
+@use "./variables" as *; /* load without namespace for convenience */
+@use "./mixins" as *; /* load without namespace for convenience */
+
+.redeemcard {
+  background-color: $color-background-primary;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 2px 2px 0 $color-shadow-primary;
+  text-align: center;
+
+  flex: 0 55%;
+  min-width: 55%;
+}
+
+.redeemcard__content {
+  padding: 2rem;
+  word-break: break-word;
+  width: 32rem;
+
+  p {
+    @include fluid-type(
+      $bp-sm,
+      $bp-xl,
+      16px,
+      18px
+    ); /* min font-size 1rem, max 1.125rem */
+
+    white-space: pre-line;
+  }
+
+  // content title
+  h3 {
+    @include fluid-type(
+      $bp-sm,
+      $bp-xl,
+      20px,
+      28px
+    ); /* min font-size 1.25rem, max 1.75rem */
+    font-weight: bold;
+    margin: 0 0 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  @include size-medium-down {
+    padding: 1rem;
+  }
+
+  @include size-down-down {
+    padding: 1rem 0.5rem;
+    width: 24rem;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .redeemcard__redeemed {
+    margin: 1rem 0 0;
+
+    > span {
+      font-size: 3rem;
+
+      @include size-down-down {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .redeemcard__unit {
+    font-size: 2rem;
+    margin: 0;
+
+    > sup {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .redeemcard__recipient {
+    margin: 0 0 1rem;
+  }
+
+  .button {
+    min-width: 7.1rem;
+  }
+}
+
+.redeemcard__address--error {
+  background-color: rgba(214, 216, 218, 0.2);
+  font-family: $font-mono;
+  padding: 0.5rem;
+  border-radius: 3px;
+}

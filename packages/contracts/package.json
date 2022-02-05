@@ -1,0 +1,82 @@
+{
+  "name": "@move-monorepo/contracts",
+  "version": "2.2.1",
+  "description": "A new modular DAO framework, inspired by the Moloch smart contracts",
+  "main": "truffle-config.js",
+  "private": true,
+  "keywords": [
+    "dao",
+    "framework",
+    "smart-contract",
+    "solidity",
+    "modular",
+    "moloch",
+    "ethereum"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "eth-sig-util": "^3.0.0",
+    "ethereumjs-util": "^7.0.5",
+    "keccak256": "^1.0.0",
+    "ts-generator": "^0.1.1"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.4",
+    "@nomiclabs/hardhat-etherscan": "^3.0.0",
+    "@nomiclabs/hardhat-truffle5": "^2.0.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/contracts": "^4.4.1",
+    "@openzeppelin/contracts-upgradeable": "^4.4.1",
+    "@types/chai": "^4.3.0",
+    "@types/eth-sig-util": "^2.1.1",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^17.0.8",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "@uniswap/v3-periphery": "^1.3.0",
+    "chai": "^4.3.4",
+    "dotenv": "^8.2.0",
+    "eslint": "^8.0.1",
+    "eth-gas-reporter": "^0.2.22",
+    "ethereum-waffle": "^3.4.0",
+    "hardhat": "2.8.0",
+    "hardhat-contract-sizer": "^2.1.1",
+    "hardhat-gas-reporter": "^1.0.6",
+    "prettier": "^2.2.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.3",
+    "solhint": "^3.3.2",
+    "solidity-coverage": "^0.7.16",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
+    "web3": "^1.6.1"
+  },
+  "scripts": {
+    "compile": "scripts/compile.sh",
+    "clean": "hardhat clean",
+    "deploy:localhost": "npx hardhat run --no-compile ./scripts/deploy.ts --network localhost",
+    "deploy:rinkeby": "npx hardhat run --no-compile ./scripts/deploy.ts --network rinkeby",
+    "deploy:ropsten": "npx hardhat run --no-compile ./scripts/deploy.ts --network ropsten",
+    "deploy:mainnet": "npx hardhat run --no-compile ./scripts/deploy.ts --network mainnet",
+    "deploy:kovan": "npx hardhat run --no-compile ./scripts/deploy.ts --network kovan",
+    "prettier": "prettier --list-different --config ../../.prettierrc.js 'build/**/*.sol' '**/*.js' '**/*.md'",
+    "prettier:fix": "prettier --write --config ../../.prettierrc.js 'build/**/*.sol' '**/*.js' '**/*.md'",
+    "test": "npx hardhat test --no-compile",
+    "verify": "npx hardhat run ./scripts/verify.ts",
+    "release": "npm run lint:fix && np --no-publish --no-yarn",
+    "eslint": "eslint -c ../../.eslintrc \"./**/*.{ts,js,tsx,jsx}\" --quiet",
+    "slither": "slither . --ignore-compile --hardhat-artifacts-directory ./artifacts --config-file ../../slither.config.json",
+    "add-copyright": "node scripts/copyright/add-copyright.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openlawteam/tribute-contracts.git"
+  },
+  "author": "dev@openlaw.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openlawteam/tribute-contracts/issues"
+  },
+  "homepage": "https://github.com/openlawteam/tribute-contracts#readme"
+}

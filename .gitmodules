@@ -1,0 +1,6 @@
+[submodule "thirdparty/snapshot-hub"]
+	path = thirdparty/snapshot-hub
+	url = https://github.com/themovementdao/snapshot-hub.git
+[submodule "thirdparty/tribute-contracts"]
+	path = thirdparty/tribute-contracts
+	url = https://github.com/themovementdao/tribute-contracts.git

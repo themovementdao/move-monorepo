@@ -1,0 +1,9 @@
+[
+  {
+    "network": "rinkeby",
+    "daoFactoryAddress": "0x5c82a8df33e614a36DFEc008479f26aBB4Ca3Fb5",
+    "daoFactoryStartBlock": 9550261,
+    "GITHUB_USERNAME": "atsignhandle",
+    "SUBGRAPH_NAME_OR_SLUG": "merkaba-monorepo-test"
+  }
+]

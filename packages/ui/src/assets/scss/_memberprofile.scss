@@ -1,0 +1,160 @@
+@use "./variables" as *; /* load without namespace for convenience */
+@use "./mixins" as *; /* load without namespace for convenience */
+@use "./button";
+
+.memberprofile__header {
+  display: inline-block;
+  @include fluid-type(
+    $bp-sm,
+    $bp-xl,
+    18px,
+    20px
+  ); /* min font-size 1.125rem, max 1.25rem */
+  letter-spacing: 1px;
+}
+
+.memberprofile {
+  background-color: $color-background-primary;
+  padding: 1rem;
+  display: flex;
+  flex: 1 100%;
+  margin: 2rem 0;
+  border: 1px solid $color-border-secondary;
+  border-radius: 15px;
+  box-shadow: 0 2px 2px 0 $color-shadow-primary;
+
+  @include size-medium-down {
+    flex-direction: column;
+  }
+}
+
+.memberprofile__left-column {
+  padding: 1.5rem;
+  flex: 0 50%;
+  min-width: 50%;
+  word-break: break-word;
+
+  p {
+    @include fluid-type(
+      $bp-sm,
+      $bp-xl,
+      16px,
+      18px
+    ); /* min font-size 1rem, max 1.125rem */
+
+    white-space: pre-line;
+  }
+
+  // content title
+  h3 {
+    @include fluid-type(
+      $bp-sm,
+      $bp-xl,
+      20px,
+      28px
+    ); /* min font-size 1.25rem, max 1.75rem */
+    font-weight: bold;
+    margin: 0 0 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  @include size-medium-down {
+    padding: 1rem;
+  }
+
+  @include size-down-down {
+    padding: 0.5rem;
+  }
+}
+
+.memberprofile__right-column {
+  padding: 1.5rem;
+  flex: 0 50%;
+
+  @include size-medium-down {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  @include size-down-down {
+    padding: 0.5rem;
+  }
+}
+
+.memberprofile__info-item {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  @include fluid-type(
+    $bp-sm,
+    $bp-xl,
+    16px,
+    18px
+  ); /* min font-size 1rem, max 1.125rem */
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  & > div:first-child {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+}
+
+.memberprofile__action {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  @include fluid-type(
+    $bp-sm,
+    $bp-xl,
+    16px,
+    18px
+  ); /* min font-size 1rem, max 1.125rem */
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  .memberprofile__action-header {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .memberprofile__action-description {
+    @include fluid-type(
+      $bp-sm,
+      $bp-xl,
+      14px,
+      16px
+    ); /* min font-size 0.875rem, max 1rem */
+  }
+}
+
+.memberprofile__action-button {
+  @extend .button--secondary;
+
+  @include fluid-type(
+    $bp-sm,
+    $bp-xl,
+    16px,
+    18px
+  ); /* min font-size 1rem, max 1.125rem */
+  width: 100%;
+  margin: 1.5rem 0;
+  display: block;
+  max-width: 20rem;
+}
+
+.memberprofile__actions-unavailable {
+  @include fluid-type(
+    $bp-sm,
+    $bp-xl,
+    16px,
+    18px
+  ); /* min font-size 1rem, max 1.125rem */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
